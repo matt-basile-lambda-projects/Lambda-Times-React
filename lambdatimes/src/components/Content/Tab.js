@@ -23,7 +23,7 @@ const Tab = props => {
 
 // Make sure you include PropTypes on your props.
 Tab.propTypes={
-  tab: PropTypes.string,
+  tab:PropTypes.string,
   selectTabHandler: PropTypes.function,
   selectedTab: PropTypes.string
 }
