@@ -23,8 +23,6 @@ export default class Content extends Component {
       this.setState({
         tabs: tabData,
         cards: cardData,
-        selected: 'ALL', 
-        filterCardArr: [],
       })
       )
       .catch(err => console.log('noooo'));
@@ -35,7 +33,6 @@ export default class Content extends Component {
     // console.log(tab)
     this.setState({selected: ev.target.innerText.toUpperCase()});
   };
-
   filterCards = () => {
   console.log(this.state.cards)
   const filtered =  this.state.cards.filter(card => {
@@ -45,8 +42,10 @@ export default class Content extends Component {
       else if(this.state.selected === card.tab.toUpperCase()){
          return card
       }
-  });
+  }
+  );
   // this.setState({cards:filtered})
+
     /* Right now this function only returns the cards on state.
       We're going to make this function more dynamic
       by using it to filter out our cards for when a tab is selected
@@ -60,7 +59,7 @@ export default class Content extends Component {
         - else, it should only return those cards whose 'tab' matched this.state.selected.
     */
     
-    return filtered;
+    return filtered 
   };
 
   render() {
