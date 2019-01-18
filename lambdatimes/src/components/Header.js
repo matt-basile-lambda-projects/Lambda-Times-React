@@ -24,12 +24,6 @@ const StyledHeader = styled.div `
     text-align: center;
     color: #000;
   }
-  span {
-    align-self: flex-end;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
 `
 const HeaderDate = styled.span `
 align-self: flex-end;

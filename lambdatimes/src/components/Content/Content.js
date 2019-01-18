@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Carousel from '../Carousel/Carousel';
 import Tabs from './Tabs';
 import Cards from './Cards';
 
@@ -15,6 +15,7 @@ export default class Content extends Component {
       cards: [],
       newTab: true,
     };
+    console.log(this.state.cards)
   }
   
   componentDidMount(){
@@ -26,15 +27,17 @@ export default class Content extends Component {
       })
       )
       .catch(err => console.log('noooo'));
+  
+  
   }
-
   changeSelected = (ev) => {
     // this function should take in the tab and update the state with the new tab.
     // console.log(tab)
     this.setState({selected: ev.target.innerText.toUpperCase()});
   };
   filterCards = () => {
-  console.log(this.state.cards)
+  console.log(this.state.cards);
+  console.log(this.state.selected);
   const filtered =  this.state.cards.filter(card => {
       if(this.state.selected === "ALL"){
         return cardData
@@ -44,6 +47,7 @@ export default class Content extends Component {
       }
   }
   );
+  console.log(filtered);
   // this.setState({cards:filtered})
 
     /* Right now this function only returns the cards on state.
@@ -63,6 +67,7 @@ export default class Content extends Component {
   };
 
   render() {
+    console.log(this.state.cards)
     return (
       <div className="content-container">
         {/* 
@@ -71,10 +76,12 @@ export default class Content extends Component {
           and `selectTabHandler` that includes the function to change the selected tab
         */}
         <Tabs 
-        tabs={this.state.tabs} 
-        selectedTab={this.state.selected}
-        selectTabHandler={this.changeSelected}
+          tabs={this.state.tabs} 
+          selectedTab={this.state.selected}
+          selectTabHandler={this.changeSelected}
         />
+        <Carousel/>
+
         <Cards cards={this.filterCards()} />
       </div>
     );
