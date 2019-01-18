@@ -10,7 +10,10 @@ Describe a life-cycle event in React?
 
 
 Explain the details of a Higher Order Component?
-
+- A High Order Component differs from a standard component, because it can accept components as a argument. This allows us to reuse component logic and return new components with specified information and functionality. Conditional checks and unique state are some of the reasons why we might choose to create a HOC.
 
 
 What are three different ways to style components in React? Explain some of the benefits of each.
+-Vanilla CSS: It's an old faithful, you can tailor it anyway you want and have a unique file for each component.
+-ReactStrap: A library that allows you to develop and style quickly and efficiently.
+-styled-Components: Another library that allows you to build styled components so that you can write all your files in JS and never rely on CSS files or classnames again. You can also reuse and customize styles and themes unlike the other two.
