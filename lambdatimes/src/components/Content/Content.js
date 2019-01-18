@@ -12,16 +12,30 @@ export default class Content extends Component {
     this.state = {
       selected: 'all',
       tabs: [],
-      cards: []
+      cards: [],
+      newTab: true,
     };
   }
+  
+  componentDidMount(){
+    console.log('CDM is running');
+    fetch(tabData, cardData)
+    .then(
+      this.setState({
+        tabs: tabData,
+        cards: cardData,
+        selected: null, 
 
-  componentDidMount() {
-    // Once the component has mounted, get the data and reflect that data on the state.
+      })
+      )
+      .catch(err => console.log('noooo'));
   }
 
-  changeSelected = tab => {
+  changeSelected = (ev) => {
     // this function should take in the tab and update the state with the new tab.
+    // console.log(tab)
+    console.log(ev.target.innerText)
+    this.setState({selected: ev.target.innerText.toUpperCase()});
   };
 
   filterCards = () => {
@@ -48,7 +62,11 @@ export default class Content extends Component {
           `selectedTab` that includes the currently selected tab
           and `selectTabHandler` that includes the function to change the selected tab
         */}
-        <Tabs tabs={this.state.tabs} />
+        <Tabs 
+        tabs={this.state.tabs} 
+        selectedTab={this.state.selected}
+        selectTabHandler={this.changeSelected}
+        />
         <Cards cards={this.filterCards()} />
       </div>
     );
