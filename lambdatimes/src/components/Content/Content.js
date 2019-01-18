@@ -10,7 +10,7 @@ export default class Content extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'all',
+      selected: 'ALL',
       tabs: [],
       cards: [],
       newTab: true,
@@ -18,14 +18,13 @@ export default class Content extends Component {
   }
   
   componentDidMount(){
-    console.log('CDM is running');
     fetch(tabData, cardData)
     .then(
       this.setState({
         tabs: tabData,
         cards: cardData,
-        selected: null, 
-
+        selected: 'ALL', 
+        filterCardArr: [],
       })
       )
       .catch(err => console.log('noooo'));
@@ -34,24 +33,34 @@ export default class Content extends Component {
   changeSelected = (ev) => {
     // this function should take in the tab and update the state with the new tab.
     // console.log(tab)
-    console.log(ev.target.innerText)
     this.setState({selected: ev.target.innerText.toUpperCase()});
   };
 
   filterCards = () => {
+  console.log(this.state.cards)
+  const filtered =  this.state.cards.filter(card => {
+      if(this.state.selected === "ALL"){
+        return cardData
+      } 
+      else if(this.state.selected === card.tab.toUpperCase()){
+         return card
+      }
+  });
+  // this.setState({cards:filtered})
     /* Right now this function only returns the cards on state.
       We're going to make this function more dynamic
-      by using it to filter out our cards for when a tab is selcted
+      by using it to filter out our cards for when a tab is selected
       
       Notice that we're passing this function to our <Cards /> component below.
       This function returns an array of cards, so we can just pass it down as such.
-
+    
       Your algorithim for the logic here is as follows: 
         - if the selected tab is 'all' it should return all 
           of the items from cardData. 
         - else, it should only return those cards whose 'tab' matched this.state.selected.
     */
-    return this.state.cards;
+    
+    return filtered;
   };
 
   render() {

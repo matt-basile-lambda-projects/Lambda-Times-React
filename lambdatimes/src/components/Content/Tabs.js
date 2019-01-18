@@ -2,8 +2,6 @@ import React from 'react';
 import Tab from './Tab';
 
 const Tabs = props => {
-  console.log("Tabs:", props.tabs);
-  console.log(props.tabs.map(tab => tab))
   return (
     <div className="tabs">
       <div className="topics">
