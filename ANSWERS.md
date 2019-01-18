@@ -5,5 +5,12 @@ What are PropTypes used for? Please describe why it's important to type check ou
 
 
 Describe a life-cycle event in React?
+- In React, when we start our application our components go through a "life-cycle". This involves Mounting, Updating and Unmounting. We can control when these life-cycle moments occur by using life-cycle events. For example, by using the method componentDidMount() we can run a specific line or lines of code once our components complete the Mounting stage of their life-cycle. Other life-cycle events are componentDidUpdate and componentWillUnmount can be used similarly during the updating and unmounting phases. 
+
+
+
 Explain the details of a Higher Order Component?
+
+
+
 What are three different ways to style components in React? Explain some of the benefits of each.
